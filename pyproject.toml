@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "combinatorial_gwas"
+version = "0.1.0"
+description = "A package for the final project of MIT's 6.874 class Deep Learning in Life Science"
+authors = ["anhoang <anhoang@wi.mit.edu>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <3.9"
+
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
+jupyterlab = "^3.0.12"
+nbdev = "^1.1.13"
+plotly = "^4.14.3"
+pandas = "^1.2.3"
+kedro = "^0.17.2"
+tqdm = "^4.59.0"
+portray = "^1.5.2"
+twine = "^3.4.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
