@@ -10,6 +10,17 @@ _tmp*
 tmp*
 tags
 
+# ignore everything in the following folders
+data/**
+logs/**
+
+# except their sub-folders
+!data/**/
+!logs/**/
+
+# also keep all .gitkeep files
+!.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
