@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: Title
       url: read_data_very_basic.html
+    - output: web,pdf
+      title: 'Function '
+      url: phenotypes.html
     output: web
     title: combinatorial_GWAS
   output: web
