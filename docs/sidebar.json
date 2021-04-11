@@ -2,6 +2,6 @@
   "combinatorial_GWAS": {
     "Overview": "/",
     "Title": "read_data_very_basic.html",
-    "Function ": "phenotypes.html"
+    "Functions to extract phenotype info": "phenotypes.html"
   }
 }

@@ -27,6 +27,8 @@ class QueryDataframe():
         return self.df.query(query_str)
 
 # Cell
+#hide_output
+
 parameters = get_parameters()
 parameters
 

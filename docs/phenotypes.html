@@ -1,6 +1,6 @@
 ---
 
-title: Function 
+title: Functions to extract phenotype info
 
 
 keywords: fastai
@@ -98,7 +98,9 @@ nb_path: "notebooks/package/phenotypes.ipynb"
 <pre>{&#39;example_test_data_ratio&#39;: 0.2,
  &#39;example_num_train_iter&#39;: 10000,
  &#39;example_learning_rate&#39;: 0.01,
- &#39;template_gwas_result_file_link&#39;: &#39;https://broad-ukb-sumstats-us-east-1.s3.amazonaws.com/round2/additive-tsvs/{phenotype_code}.gwas.imputed_v3.both_sexes.tsv.bgz&#39;}</pre>
+ &#39;template_gwas_result_file_link&#39;: &#39;https://broad-ukb-sumstats-us-east-1.s3.amazonaws.com/round2/additive-tsvs/{phenotype_code}.gwas.imputed_v3.both_sexes.tsv.bgz&#39;,
+ &#39;genotype_file_name&#39;: None,
+ &#39;genotype_paths&#39;: None}</pre>
 </div>
 
 </div>
@@ -1021,7 +1023,7 @@ Name: I84, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_phenotype" class="doc_header"><code>get_phenotype</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_GWAS/phenotypes.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_phenotype</code>(<strong><code>icd10_codes</code></strong>:<code>Union</code>[<code>str</code>, <code>List</code>[<code>str</code>]]=<em><code>'I84'</code></em>)</p>
+<h4 id="get_phenotype" class="doc_header"><code>get_phenotype</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_GWAS/phenotypes.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_phenotype</code>(<strong><code>icd10_codes</code></strong>:<code>Union</code>[<code>str</code>, <code>List</code>[<code>str</code>]]=<em><code>'I84'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1282,7 +1284,7 @@ Name: I84, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_GWAS_snps_for_trait" class="doc_header"><code>get_GWAS_snps_for_trait</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_GWAS/phenotypes.py#L62" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_GWAS_snps_for_trait</code>(<strong><code>phenotype_code</code></strong>=<em><code>'I84'</code></em>, <strong><code>chromosome</code></strong>:<code>int</code>=<em><code>21</code></em>, <strong><code>sort_val_cols_list</code></strong>:<code>List</code>[<code>str</code>]=<em><code>['pval']</code></em>, <strong><code>ascending_bool_list</code></strong>:<code>List</code>[<code>bool</code>]=<em><code>[False]</code></em>, <strong><code>id_only</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="get_GWAS_snps_for_trait" class="doc_header"><code>get_GWAS_snps_for_trait</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_GWAS/phenotypes.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_GWAS_snps_for_trait</code>(<strong><code>phenotype_code</code></strong>=<em><code>'I84'</code></em>, <strong><code>chromosome</code></strong>:<code>int</code>=<em><code>21</code></em>, <strong><code>sort_val_cols_list</code></strong>:<code>List</code>[<code>str</code>]=<em><code>['pval']</code></em>, <strong><code>ascending_bool_list</code></strong>:<code>List</code>[<code>bool</code>]=<em><code>[False]</code></em>, <strong><code>id_only</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 
 </div>
