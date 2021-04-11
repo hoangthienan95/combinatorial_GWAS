@@ -8,6 +8,8 @@ authors = ["anhoang <anhoang@wi.mit.edu>"]
 python = ">=3.8, <3.9"
 keras-tuner = "^1.0.2"
 bgen-reader = "^4.0.7"
+requests = "^2.25.1"
+aiohttp = "^3.7.4"
 
 
 [tool.poetry.dev-dependencies]
