@@ -1,6 +1,4 @@
 template_paths:
-    genetic: "base/path"
-    
-genetic_folder_path: "replace/this/with/your/path/in/conf/local/globals.yml"
-genetic_file_template: "ukb_imp_chr{chrom_number}_v3.bgen"
-sample_file_template: "ukb45624_imp_chr{chrom_number)_v3_s487275.sample"
+    genetic: "replace/this/with/your/path/in/conf/local/globals.yml"
+    sample: "replace/this/with/your/path/in/conf/local/globals.yml"
+

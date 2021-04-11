@@ -33,13 +33,13 @@ def change_cwd_dir(new_dir):
 
 # Cell
 
-import combinatorial_GWAS
+import combinatorial_gwas
 from kedro.config import ConfigLoader, TemplatedConfigLoader
 from kedro.io import DataCatalog
 import os
 from pathlib import Path
 
-package_outer_folder = Path(combinatorial_GWAS.__file__).parents[1]
+package_outer_folder = Path(combinatorial_gwas.__file__).parents[1]
 
 @change_cwd_dir(new_dir = package_outer_folder)
 def get_config(env, patterns, globals_pattern="globals*.y*ml"):#(env, patterns):
@@ -56,7 +56,7 @@ def get_config(env, patterns, globals_pattern="globals*.y*ml"):#(env, patterns):
 
 @change_cwd_dir(new_dir = package_outer_folder)
 @delegates(get_config)
-def get_catalog(env: Union[str, List[str]]="base", patterns=["catalog*.yml", "catalog*.yaml", "catalog*/*.yml", "catalog*/*.yaml"], **kwargs):
+def get_catalog(env: Union[str, List[str]]=["base", "local"], patterns=["catalog*.yml", "catalog*.yaml", "catalog*/*.yml", "catalog*/*.yaml"], **kwargs):
 
     conf_catalog = get_config(env, patterns, **kwargs)#env, patterns)
 
@@ -69,7 +69,7 @@ def get_catalog(env: Union[str, List[str]]="base", patterns=["catalog*.yml", "ca
     return catalog
 
 @change_cwd_dir(new_dir = package_outer_folder)
-def get_parameters(env="base", patterns=["param*.yml", "param*.yaml", "param*/*.yml", "param*/*.yaml"]):
+def get_parameters(env=["base", "local"], patterns=["param*.yml", "param*.yaml", "param*/*.yml", "param*/*.yaml"]):
     params = get_config(env, patterns)
     return params
 

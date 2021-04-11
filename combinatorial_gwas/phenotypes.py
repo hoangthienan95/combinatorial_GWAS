@@ -5,7 +5,7 @@ __all__ = ['QueryDataframe', 'parameters', 'catalog_all', 'catalog_all', 'read_c
 
 # Cell
 from .data_catalog import get_catalog, get_parameters
-import combinatorial_GWAS
+import combinatorial_gwas
 from pathlib import Path
 import pandas as pd
 from dataclasses import dataclass

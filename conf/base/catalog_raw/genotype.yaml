@@ -1,0 +1,10 @@
+# genetic_file_bgen:
+#     type: corradin_ovp_utils.datasets.OVPDataset.OVPDataset
+#     file_format: genetic_file.Bgen.BgenFileFormat
+#     file_type: OVPDataset.SingleFilePathSchema
+#     file_path:
+#         folder: ${genetic_folder_path} #/lab/corradin_biobank/Raw_UKB_downloads/BGEN/
+#         split_by_chromosome: True
+#         full_file_name: "ukb_imp_chr{chrom_num}_v3.bgen"
+#     load_args:
+#         sample_file: "/lab/corradin_biobank/Raw_UKB_downloads/sample_files/ukb45624_imp_chr9_v3_s487320.sample"
