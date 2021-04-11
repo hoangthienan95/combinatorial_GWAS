@@ -1,3 +1,46 @@
-example_iris_data:
+_compressed_tsv: &compressed_tsv
   type: pandas.CSVDataSet
-  filepath: data/01_raw/iris.csv
+  load_args:
+    sep: '\t'
+    compression: "gzip"
+    
+####
+#generated
+ICD10_pheno_matrix:
+    type: pandas.CSVDataSet
+    filepath: "data/01_raw/phenotypes/ICD10_pheno_matrix.tsv"
+    load_args:
+        sep: "\t"
+        index_col: "f.eid"
+
+
+####
+#GWAS info
+#from https://docs.google.com/spreadsheets/d/1kvPoupSzsSFBNSztMzl04xMoSC3Kcx3CrjVf4yBmESU/edit?ts=5b5f17db#gid=178908679
+
+phenotypes_info_Neale:
+    type: pandas.CSVDataSet
+    filepath: data/01_raw/phenotypes/phenotypes.both_sexes.v2.tsv
+    load_args:
+        sep: "\t"
+        index_col: "phenotype"
+
+GWAS_results_links_df:
+    type: pandas.CSVDataSet
+    filepath: "data/01_raw/phenotypes/UKBB GWAS Imputed v3 - File Manifest Release 20180731 - Manifest 201807.tsv"
+    load_args:
+        sep: "\t"
+        index_col: "Phenotype Code"
+    
+
+########
+#from https://nealelab.github.io/UKBB_ldsc/downloads.html
+heritability_trait_level_summary:
+    <<: *compressed_tsv
+    filepath: "https://www.dropbox.com/s/8vca84rsslgbsua/ukb31063_h2_topline.02Oct2019.tsv.gz?dl=1"
+
+        
+heritability_trait_level_partitioned_z4_sig:
+    <<: *compressed_tsv
+    filepath: "https://www.dropbox.com/s/gu9ueqdulze9c9x/ukb31063_h2_z4.02Oct2019.tsv.gz?dl=1"
+        

@@ -6,3 +6,10 @@
 example_iris_data:
   type: pandas.CSVDataSet
   filepath: data/01_raw/iris.csv
+  
+globals_test:
+  type: pandas.CSVDataSet
+  filepath: ${template_paths.genetic}/iris.csv
+  
+  
+

@@ -2,9 +2,24 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"cd": "catalog.ipynb",
+         "change_cwd_dir": "catalog.ipynb",
+         "get_config": "catalog.ipynb",
+         "get_catalog": "catalog.ipynb",
+         "get_parameters": "catalog.ipynb",
+         "reload_catalog": "catalog.ipynb",
+         "reload": "catalog.ipynb",
+         "package_outer_folder": "catalog.ipynb",
+         "QueryDataframe": "phenotypes.ipynb",
+         "read_csv_compressed": "phenotypes.ipynb",
+         "get_GWAS_result_link": "phenotypes.ipynb",
+         "icd10_pheno_matrix": "phenotypes.ipynb",
+         "icd10_primary_cols": "phenotypes.ipynb",
+         "get_phenotype": "phenotypes.ipynb",
+         "get_GWAS_snps_for_trait": "phenotypes.ipynb"}
 
-modules = []
+modules = ["data_catalog.py",
+           "phenotypes.py"]
 
 doc_url = "https://hoangthienan95.github.io/combinatorial_GWAS/"
 

@@ -9,9 +9,12 @@ python = ">=3.8, <3.9"
 keras-tuner = "^1.0.2"
 bgen-reader = "^4.0.7"
 
+
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"
 jupyterlab = "^3.0.12"
+ipython = "7.10"
+jedi = "0.17.2"
 nbdev = "^1.1.13"
 plotly = "^4.14.3"
 pandas = "^1.2.3"
@@ -19,6 +22,7 @@ kedro = "^0.17.2"
 tqdm = "^4.59.0"
 portray = "^1.5.2"
 twine = "^3.4.1"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

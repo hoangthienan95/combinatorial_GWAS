@@ -13,6 +13,7 @@ tags
 # ignore everything in the following folders
 data/**
 logs/**
+conf/local/**
 
 # except their sub-folders
 !data/**/
