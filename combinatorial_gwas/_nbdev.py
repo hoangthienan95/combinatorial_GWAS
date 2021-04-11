@@ -23,8 +23,8 @@ index = {"cd": "catalog.ipynb",
 modules = ["data_catalog.py",
            "phenotypes.py"]
 
-doc_url = "https://hoangthienan95.github.io/combinatorial_GWAS/"
+doc_url = "https://hoangthienan95.github.io/combinatorial_gwas/"
 
-git_url = "https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/"
+git_url = "https://github.com/hoangthienan95/combinatorial_gwas/tree/master/"
 
 def custom_doc_links(name): return None
