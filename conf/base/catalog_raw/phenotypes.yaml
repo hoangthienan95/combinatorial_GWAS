@@ -12,6 +12,7 @@ ICD10_pheno_matrix:
     load_args:
         sep: "\t"
         index_col: "f.eid"
+        low_memory: False
 
 
 ####
@@ -43,4 +44,4 @@ heritability_trait_level_summary:
 heritability_trait_level_partitioned_z4_sig:
     <<: *compressed_tsv
     filepath: "https://www.dropbox.com/s/gu9ueqdulze9c9x/ukb31063_h2_z4.02Oct2019.tsv.gz?dl=1"
-        
+

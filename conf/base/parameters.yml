@@ -4,5 +4,7 @@ example_learning_rate: 0.01
 template_gwas_result_file_link: "https://broad-ukb-sumstats-us-east-1.s3.amazonaws.com/round2/additive-tsvs/{phenotype_code}.gwas.imputed_v3.both_sexes.tsv.bgz"
 genetic_file_path_template: "${template_paths.genetic}/ukb_imp_chr{chrom_number}_v3.bgen"
 sample_file_template: "${template_paths.sample}/ukb45624_imp_chr21_v3_s487275.sample"
-    
-    
+data_dict_file: "${template_paths.data_dict}/Data_Dictionary_Showcase.csv"
+pheno_file: "${template_paths.pheno_file}/neale_gwas_both_sexes_parquet/"
+coding_file_path_template: "${template_paths.data_dict}/data_codes/datacode-*.tsv"
+id_col: "f.eid"

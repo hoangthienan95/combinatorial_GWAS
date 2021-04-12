@@ -16,6 +16,6 @@ entries:
       title: Functions to extract phenotype info
       url: phenotypes.html
     output: web
-    title: combinatorial_GWAS
+    title: combinatorial_gwas
   output: web
   title: Sidebar

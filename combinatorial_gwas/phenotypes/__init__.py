@@ -4,7 +4,7 @@ __all__ = ['QueryDataframe', 'parameters', 'catalog_all', 'catalog_all', 'read_c
            'icd10_pheno_matrix', 'icd10_primary_cols', 'icd10_pheno_matrix', 'get_phenotype', 'get_GWAS_snps_for_trait']
 
 # Cell
-from .data_catalog import get_catalog, get_parameters
+from ..data_catalog import get_catalog, get_parameters
 import combinatorial_gwas
 from pathlib import Path
 import pandas as pd
@@ -27,8 +27,6 @@ class QueryDataframe():
         return self.df.query(query_str)
 
 # Cell
-#hide_output
-
 parameters = get_parameters()
 parameters
 
@@ -43,27 +41,42 @@ get_GWAS_result_link = partialler(parameters['template_gwas_result_file_link'].f
 
 
 # Cell
+logging.warning("Loading ICD phenotype matrix, this might take a while")
 icd10_pheno_matrix = catalog_all.load("ICD10_pheno_matrix")
+
 
 #get the first 3 character of ICD code
 icd10_primary_cols = icd10_pheno_matrix.columns[icd10_pheno_matrix.columns.str.contains("primary")]
 icd10_pheno_matrix = icd10_pheno_matrix.astype(str).apply(lambda x: x.str.slice(0,3))
 
-
+logging.warning("Finished loading ICD10 matrix")
 
 # Cell
-def get_phenotype(icd10_codes: Union[str, List[str]] ="I84"):
+def get_phenotype(icd10_codes: Union[str, List[str]] ="I84", samples:pd.Series=None):
+    """
+    if samples argument is provided from genetic file, then find common set of samples and output ordered phenotype
+    """
     icd10_codes = [icd10_codes] if not isinstance(icd10_codes, list) else icd10_codes
     pheno_df_list = [icd10_pheno_matrix[icd10_primary_cols].isin([icd10_code]).any(axis=1).astype(int) for icd10_code in icd10_codes]
     pheno_df = pd.concat(pheno_df_list, axis=1)
     pheno_df.columns = icd10_codes
-    return pheno_df
+
+    if samples is not None:
+        geno_pheno_sample_index_mask = np.isin(samples.values.astype(int), pheno_df.index)
+        pheno_geno_samples_common_set = samples.values[geno_pheno_sample_index_mask].astype(int)
+        pheno_df_ordered = pheno_df.loc[list(pheno_geno_samples_common_set), :]
+        pheno_df_ordered = pheno_df_ordered.loc[~pheno_df_ordered.index.duplicated(keep="first"),:]
+        sample_index = np.argwhere(geno_pheno_sample_index_mask).reshape(-1)
+        return sample_index, pheno_df_ordered
+    return None, pheno_df
 
 # Cell
 
-def get_GWAS_snps_for_trait(phenotype_code= "I84", chromosome:int = 21, sort_val_cols_list: List[str] = ["pval"], ascending_bool_list: List[bool] = [False], id_only= True):
-    chromosome_str = f"{chromosome}:"
-    gwas_result_df = read_csv_compressed(get_GWAS_result_link(phenotype_code=phenotype_code)).query(f"variant.str.startswith('{chromosome_str}')")
+def get_GWAS_snps_for_trait(phenotype_code= "I84", chromosome:Union[int, List[int]] = 21, sort_val_cols_list: List[str] = ["pval"], ascending_bool_list: List[bool] = [True], id_only= True):
+    chromosome = [chromosome] if not isinstance(chromosome, list) else chromosome
+    chromosome_str = [f"{single_chromosome}:" for single_chromosome in chromosome]
+    gwas_result_df = read_csv_compressed(get_GWAS_result_link(phenotype_code=phenotype_code))
+    gwas_result_df = gwas_result_df.loc[gwas_result_df["variant"].str.startswith(tuple(chromosome_str)), :]
     gwas_result_df = gwas_result_df.reset_index(drop=True).reset_index().rename(columns = {"index":"position_rank"})
     gwas_result_df = gwas_result_df.sort_values(sort_val_cols_list, ascending = ascending_bool_list)
     variant_id_df = gwas_result_df["variant"].str.split(":",expand=True)

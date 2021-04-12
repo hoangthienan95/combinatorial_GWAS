@@ -32,8 +32,12 @@ nb_path: "notebooks/package/phenotypes.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/ahoang/Documents/MIT_classes/DeepLearning_Spring21/combinatorial_GWAS/.venv/lib/python3.8/site-packages/kedro/io/data_catalog.py:402: DtypeWarning: Columns (28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236) have mixed types.Specify dtype option on import or set low_memory=False.
-  result = func()
+<pre>WARNING:root:Loading ICD phenotype matrix, this might take a while
+WARNING:root:Finished loading ICD10 matrix
+/lab/corradin_biobank/FOR_AN/combinatorial_GWAS/combinatorial_gwas/phenotypes/__init__.py:22: UserWarning: registration of accessor &lt;class &#39;combinatorial_gwas.phenotypes.__init__.QueryDataframe&#39;&gt; under name &#39;pheno&#39; for type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt; is overriding a preexisting attribute with the same name.
+  class QueryDataframe():
+WARNING:root:Loading ICD phenotype matrix, this might take a while
+WARNING:root:Finished loading ICD10 matrix
 </pre>
 </div>
 </div>
@@ -62,7 +66,7 @@ nb_path: "notebooks/package/phenotypes.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="QueryDataframe" class="doc_header"><code>class</code> <code>QueryDataframe</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_GWAS/phenotypes.py#L22" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>QueryDataframe</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h2 id="QueryDataframe" class="doc_header"><code>class</code> <code>QueryDataframe</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/__init__.py#L22" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>QueryDataframe</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 <p>QueryDataframe(df: pandas.core.frame.DataFrame)</p>
 
@@ -79,6 +83,21 @@ nb_path: "notebooks/package/phenotypes.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>&lt;ipython-input-21-dcb25e435725&gt;:5: UserWarning: registration of accessor &lt;class &#39;__main__.QueryDataframe&#39;&gt; under name &#39;pheno&#39; for type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt; is overriding a preexisting attribute with the same name.
+  class QueryDataframe():
+</pre>
+</div>
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -99,8 +118,12 @@ nb_path: "notebooks/package/phenotypes.ipynb"
  &#39;example_num_train_iter&#39;: 10000,
  &#39;example_learning_rate&#39;: 0.01,
  &#39;template_gwas_result_file_link&#39;: &#39;https://broad-ukb-sumstats-us-east-1.s3.amazonaws.com/round2/additive-tsvs/{phenotype_code}.gwas.imputed_v3.both_sexes.tsv.bgz&#39;,
- &#39;genotype_file_name&#39;: None,
- &#39;genotype_paths&#39;: None}</pre>
+ &#39;genetic_file_path_template&#39;: &#39;/lab/corradin_biobank/Raw_UKB_downloads/BGEN/ukb_imp_chr{chrom_number}_v3.bgen&#39;,
+ &#39;sample_file_template&#39;: &#39;/lab/corradin_biobank/Raw_UKB_downloads/sample_files/ukb45624_imp_chr21_v3_s487275.sample&#39;,
+ &#39;data_dict_file&#39;: &#39;/lab/corradin_biobank/Phenotypes//Data_Dictionary_Showcase.csv&#39;,
+ &#39;pheno_file&#39;: &#39;/lab/corradin_biobank/samples//neale_gwas_both_sexes_parquet/&#39;,
+ &#39;coding_file_path_template&#39;: &#39;/lab/corradin_biobank/Phenotypes//data_codes/datacode-*.tsv&#39;,
+ &#39;id_col&#39;: &#39;f.eid&#39;}</pre>
 </div>
 
 </div>
@@ -124,6 +147,8 @@ nb_path: "notebooks/package/phenotypes.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>[&#39;example_iris_data&#39;,
+ &#39;globals_test&#39;,
+ &#39;disease_summary&#39;,
  &#39;ICD10_pheno_matrix&#39;,
  &#39;phenotypes_info_Neale&#39;,
  &#39;GWAS_results_links_df&#39;,
@@ -180,7 +205,7 @@ nb_path: "notebooks/package/phenotypes.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/ahoang/Documents/MIT_classes/DeepLearning_Spring21/combinatorial_GWAS/.venv/lib/python3.8/site-packages/kedro/extras/datasets/pandas/csv_dataset.py:158: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support regex separators (separators &gt; 1 char and different from &#39;\s+&#39; are interpreted as regex); you can avoid this warning by specifying engine=&#39;python&#39;.
+<pre>/lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/kedro/extras/datasets/pandas/csv_dataset.py:158: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support regex separators (separators &gt; 1 char and different from &#39;\s+&#39; are interpreted as regex); you can avoid this warning by specifying engine=&#39;python&#39;.
   return pd.read_csv(fs_file, **self._load_args)
 </pre>
 </div>
@@ -1023,8 +1048,9 @@ Name: I84, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_phenotype" class="doc_header"><code>get_phenotype</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_GWAS/phenotypes.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_phenotype</code>(<strong><code>icd10_codes</code></strong>:<code>Union</code>[<code>str</code>, <code>List</code>[<code>str</code>]]=<em><code>'I84'</code></em>)</p>
+<h4 id="get_phenotype" class="doc_header"><code>get_phenotype</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/__init__.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_phenotype</code>(<strong><code>icd10_codes</code></strong>:<code>Union</code>[<code>str</code>, <code>List</code>[<code>str</code>]]=<em><code>'I84'</code></em>, <strong><code>samples</code></strong>:<code>Series</code>=<em><code>None</code></em>)</p>
 </blockquote>
+<p>if samples argument is provided from genetic file, then find common set of samples and output ordered phenotype</p>
 
 </div>
 
@@ -1284,7 +1310,7 @@ Name: I84, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_GWAS_snps_for_trait" class="doc_header"><code>get_GWAS_snps_for_trait</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_GWAS/phenotypes.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_GWAS_snps_for_trait</code>(<strong><code>phenotype_code</code></strong>=<em><code>'I84'</code></em>, <strong><code>chromosome</code></strong>:<code>int</code>=<em><code>21</code></em>, <strong><code>sort_val_cols_list</code></strong>:<code>List</code>[<code>str</code>]=<em><code>['pval']</code></em>, <strong><code>ascending_bool_list</code></strong>:<code>List</code>[<code>bool</code>]=<em><code>[False]</code></em>, <strong><code>id_only</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="get_GWAS_snps_for_trait" class="doc_header"><code>get_GWAS_snps_for_trait</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/__init__.py#L75" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_GWAS_snps_for_trait</code>(<strong><code>phenotype_code</code></strong>=<em><code>'I84'</code></em>, <strong><code>chromosome</code></strong>:<code>Union</code>[<code>int</code>, <code>List</code>[<code>int</code>]]=<em><code>21</code></em>, <strong><code>sort_val_cols_list</code></strong>:<code>List</code>[<code>str</code>]=<em><code>['pval']</code></em>, <strong><code>ascending_bool_list</code></strong>:<code>List</code>[<code>bool</code>]=<em><code>[True]</code></em>, <strong><code>id_only</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1326,7 +1352,7 @@ Name: I84, dtype: object</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([&#39;21:23683958_G_A&#39;, &#39;21:44501642_C_T&#39;, &#39;21:25570916_T_C&#39;, ...,
+<pre>array([&#39;21:46875774_C_T&#39;, &#39;21:30968890_C_T&#39;, &#39;21:43767602_A_G&#39;, ...,
        &#39;21:46876064_G_C&#39;, &#39;21:47773893_C_G&#39;, &#39;21:47831648_C_T&#39;],
       dtype=object)</pre>
 </div>
@@ -1626,6 +1652,317 @@ Name: I84, dtype: object</pre>
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">get_GWAS_snps_for_trait</span><span class="p">(</span><span class="n">chromosome</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="n">id_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">test</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>position_rank</th>
+      <th>variant</th>
+      <th>minor_allele</th>
+      <th>minor_AF</th>
+      <th>expected_case_minor_AC</th>
+      <th>low_confidence_variant</th>
+      <th>n_complete_samples</th>
+      <th>AC</th>
+      <th>ytx</th>
+      <th>beta</th>
+      <th>se</th>
+      <th>tstat</th>
+      <th>pval</th>
+      <th>chr</th>
+      <th>position</th>
+      <th>major_allele</th>
+      <th>full_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>466355</th>
+      <td>466355</td>
+      <td>21:46875774:C:T</td>
+      <td>T</td>
+      <td>6.791200e-06</td>
+      <td>0.172184</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>4.905880</td>
+      <td>2.117650</td>
+      <td>0.667492</td>
+      <td>0.107762</td>
+      <td>6.19411</td>
+      <td>5.867920e-10</td>
+      <td>21</td>
+      <td>46875774</td>
+      <td>C</td>
+      <td>21:46875774_C_T</td>
+    </tr>
+    <tr>
+      <th>194304</th>
+      <td>194304</td>
+      <td>20:43850800:C:T</td>
+      <td>T</td>
+      <td>1.737160e-07</td>
+      <td>0.004404</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.125490</td>
+      <td>0.086275</td>
+      <td>12.826500</td>
+      <td>2.294580</td>
+      <td>5.58991</td>
+      <td>2.273570e-08</td>
+      <td>20</td>
+      <td>43850800</td>
+      <td>C</td>
+      <td>20:43850800_C_T</td>
+    </tr>
+    <tr>
+      <th>149090</th>
+      <td>149090</td>
+      <td>20:33444611:C:T</td>
+      <td>T</td>
+      <td>1.644870e-06</td>
+      <td>0.041704</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>1.188240</td>
+      <td>0.568627</td>
+      <td>2.003390</td>
+      <td>0.359746</td>
+      <td>5.56892</td>
+      <td>2.565050e-08</td>
+      <td>20</td>
+      <td>33444611</td>
+      <td>C</td>
+      <td>20:33444611_C_T</td>
+    </tr>
+    <tr>
+      <th>83527</th>
+      <td>83527</td>
+      <td>20:16253954:A:G</td>
+      <td>G</td>
+      <td>8.088640e-07</td>
+      <td>0.020508</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.584314</td>
+      <td>0.533333</td>
+      <td>1.910680</td>
+      <td>0.354733</td>
+      <td>5.38626</td>
+      <td>7.198550e-08</td>
+      <td>20</td>
+      <td>16253954</td>
+      <td>A</td>
+      <td>20:16253954_A_G</td>
+    </tr>
+    <tr>
+      <th>183263</th>
+      <td>183263</td>
+      <td>20:41514559:A:G</td>
+      <td>G</td>
+      <td>3.257170e-08</td>
+      <td>0.000826</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.023529</td>
+      <td>0.011765</td>
+      <td>88.836800</td>
+      <td>16.586000</td>
+      <td>5.35613</td>
+      <td>8.507440e-08</td>
+      <td>20</td>
+      <td>41514559</td>
+      <td>A</td>
+      <td>20:41514559_A_G</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>457657</th>
+      <td>457657</td>
+      <td>21:45545974:C:T</td>
+      <td>T</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21</td>
+      <td>45545974</td>
+      <td>C</td>
+      <td>21:45545974_C_T</td>
+    </tr>
+    <tr>
+      <th>460945</th>
+      <td>460945</td>
+      <td>21:46067181:G:C</td>
+      <td>C</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21</td>
+      <td>46067181</td>
+      <td>G</td>
+      <td>21:46067181_G_C</td>
+    </tr>
+    <tr>
+      <th>466362</th>
+      <td>466362</td>
+      <td>21:46876064:G:C</td>
+      <td>C</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21</td>
+      <td>46876064</td>
+      <td>G</td>
+      <td>21:46876064_G_C</td>
+    </tr>
+    <tr>
+      <th>471833</th>
+      <td>471833</td>
+      <td>21:47773893:C:G</td>
+      <td>G</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21</td>
+      <td>47773893</td>
+      <td>C</td>
+      <td>21:47773893_C_G</td>
+    </tr>
+    <tr>
+      <th>472250</th>
+      <td>472250</td>
+      <td>21:47831648:C:T</td>
+      <td>T</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>361194</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21</td>
+      <td>47831648</td>
+      <td>C</td>
+      <td>21:47831648_C_T</td>
+    </tr>
+  </tbody>
+</table>
+<p>473916 rows × 17 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s2">&quot;chr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 

@@ -63,4 +63,4 @@ plugins:
     - jekyll-remote-theme
     
 remote_theme: fastai/nbdev-jekyll-theme
-baseurl: /combinatorial_gwas/
+baseurl: /combinatorial_GWAS/

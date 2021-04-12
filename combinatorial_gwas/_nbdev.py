@@ -2,7 +2,13 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"cd": "catalog.ipynb",
+index = {"parameters": "phenotypes.ipynb",
+         "DelegatedAttribute": "Field.ipynb",
+         "delegate_as": "Field.ipynb",
+         "Field": "Field.ipynb",
+         "DictLine": "Field.ipynb",
+         "Coding": "Field.ipynb",
+         "cd": "catalog.ipynb",
          "change_cwd_dir": "catalog.ipynb",
          "get_config": "catalog.ipynb",
          "get_catalog": "catalog.ipynb",
@@ -10,8 +16,11 @@ index = {"cd": "catalog.ipynb",
          "reload_catalog": "catalog.ipynb",
          "reload": "catalog.ipynb",
          "package_outer_folder": "catalog.ipynb",
+         "get_geno_one_snp": "genotype.ipynb",
+         "BgenFileObject": "genotype.ipynb",
+         "get_genetic_file_path": "genotype.ipynb",
+         "load_genetic_file": "genotype.ipynb",
          "QueryDataframe": "phenotypes.ipynb",
-         "parameters": "phenotypes.ipynb",
          "catalog_all": "phenotypes.ipynb",
          "read_csv_compressed": "phenotypes.ipynb",
          "get_GWAS_result_link": "phenotypes.ipynb",
@@ -20,10 +29,12 @@ index = {"cd": "catalog.ipynb",
          "get_phenotype": "phenotypes.ipynb",
          "get_GWAS_snps_for_trait": "phenotypes.ipynb"}
 
-modules = ["data_catalog.py",
-           "phenotypes.py"]
+modules = ["phenotypes/Field.py",
+           "data_catalog.py",
+           "genotype.py",
+           "phenotypes/__init__.py"]
 
-doc_url = "https://hoangthienan95.github.io/combinatorial_gwas/"
+doc_url = "https://hoangthienan95.github.io/combinatorial_GWAS/"
 
 git_url = "https://github.com/hoangthienan95/combinatorial_gwas/tree/master/"
 

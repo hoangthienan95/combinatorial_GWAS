@@ -11,6 +11,7 @@ bgen-reader = "^4.0.7"
 requests = "^2.25.1"
 aiohttp = "^3.7.4"
 pydantic = "^1.8.1"
+fastparquet = "^0.5.0"
 
 
 [tool.poetry.dev-dependencies]
