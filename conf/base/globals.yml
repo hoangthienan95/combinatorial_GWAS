@@ -1,4 +1,5 @@
 template_paths:
     genetic: "replace/this/with/your/path/in/conf/local/globals.yml"
     sample: "replace/this/with/your/path/in/conf/local/globals.yml"
-
+    data_dict: "replace/this/with/your/path/in/conf/local/globals.yml"
+    pheno_file: "replace/this/with/your/path/in/conf/local/globals.yml"

@@ -1,0 +1,39 @@
+chr_22:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/chr_21.pkl
+  
+simulation_to_sample_from_df:
+    type: pandas.CSVDataSet
+    filepath: data/03_primary/simulation/simulation_to_sample_from_df.tsv
+    load_args:
+        sep: "\t"
+    save_args:
+        sep: "\t"
+
+simulation_sampled_df:
+    type: pandas.CSVDataSet
+    filepath: data/03_primary/simulation/simulation_sampled_df.tsv
+    load_args:
+        sep: "\t"
+    save_args:
+        sep: "\t"
+        
+simulation_I83_snp_pairs_df:
+    type: pandas.CSVDataSet
+    filepath: data/03_primary/simulation/I83_simulation_snp_pairs_df.tsv
+    load_args:
+        sep: "\t"
+    save_args:
+        sep: "\t"
+
+simulation_I83_geno_df:
+    type: pandas.CSVDataSet
+    filepath: data/03_primary/simulation/simulation_I83_geno_df.tsv
+    load_args:
+        sep: "\t"
+    save_args:
+        sep: "\t"
+        
+simulation_I83_queries_pheno_dict:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/simulation/simulation_I83_queries_pheno_dict.pkl

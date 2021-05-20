@@ -32,7 +32,9 @@ nb_path: "notebooks/package/Field.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:root:Loading ICD phenotype matrix, this might take a while
+<pre>/lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/kedro/extras/datasets/pandas/csv_dataset.py:158: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support regex separators (separators &gt; 1 char and different from &#39;\s+&#39; are interpreted as regex); you can avoid this warning by specifying engine=&#39;python&#39;.
+  return pd.read_csv(fs_file, **self._load_args)
+WARNING:root:Loading ICD phenotype matrix, this might take a while
 WARNING:root:Finished loading ICD10 matrix
 /lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/fastparquet/writer.py:70: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -40,8 +42,6 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 /lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/fastparquet/parquet_thrift/parquet/ttypes.py:1929: DeprecationWarning: PY_SSIZE_T_CLEAN will be required for &#39;#&#39; formats
   iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
 WARNING:root:Found ID column, setting index. This might take a bit long. Please be patient.
-/lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/fastparquet/parquet_thrift/parquet/ttypes.py:975: DeprecationWarning: PY_SSIZE_T_CLEAN will be required for &#39;#&#39; formats
-  iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
 /lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/fastparquet/parquet_thrift/parquet/ttypes.py:975: DeprecationWarning: PY_SSIZE_T_CLEAN will be required for &#39;#&#39; formats
   iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
 /lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/fastparquet/parquet_thrift/parquet/ttypes.py:975: DeprecationWarning: PY_SSIZE_T_CLEAN will be required for &#39;#&#39; formats
@@ -142,7 +142,7 @@ pheno_df = pheno_df</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DelegatedAttribute" class="doc_header"><code>class</code> <code>DelegatedAttribute</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/Field.py#L34" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DelegatedAttribute</code>(<strong><code>delegate_name</code></strong>, <strong><code>attr_name</code></strong>)</p>
+<h2 id="DelegatedAttribute" class="doc_header"><code>class</code> <code>DelegatedAttribute</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/Field.py#L34" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DelegatedAttribute</code>(<strong><code>delegate_name</code></strong>, <strong><code>attr_name</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -166,7 +166,7 @@ pheno_df = pheno_df</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="delegate_as" class="doc_header"><code>delegate_as</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/Field.py#L78" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>delegate_as</code>(<strong><code>delegate_cls</code></strong>, <strong><code>to</code></strong>=<em><code>'delegate'</code></em>)</p>
+<h4 id="delegate_as" class="doc_header"><code>delegate_as</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/Field.py#L78" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>delegate_as</code>(<strong><code>delegate_cls</code></strong>, <strong><code>to</code></strong>=<em><code>'delegate'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -197,7 +197,7 @@ pheno_df = pheno_df</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Field" class="doc_header"><code>class</code> <code>Field</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/Field.py#L110" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Field</code>(<strong><code>pheno</code></strong>, <strong><code>name</code></strong>=<em><code>'Unamed_Field'</code></em>, <strong><code>instances</code></strong>=<em><code>None</code></em>, <strong><code>arrays</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="Field" class="doc_header"><code>class</code> <code>Field</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/Field.py#L110" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Field</code>(<strong><code>pheno</code></strong>, <strong><code>name</code></strong>=<em><code>'Unamed_Field'</code></em>, <strong><code>instances</code></strong>=<em><code>None</code></em>, <strong><code>arrays</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -221,7 +221,7 @@ pheno_df = pheno_df</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DictLine" class="doc_header"><code>class</code> <code>DictLine</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/Field.py#L260" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DictLine</code>(<strong><code>dict_line_df</code></strong>)</p>
+<h2 id="DictLine" class="doc_header"><code>class</code> <code>DictLine</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/Field.py#L260" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DictLine</code>(<strong><code>dict_line_df</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -245,7 +245,7 @@ pheno_df = pheno_df</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Coding" class="doc_header"><code>class</code> <code>Coding</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/Field.py#L299" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Coding</code>(<strong><code>coding_file</code></strong>, <strong><code>coding_num</code></strong>)</p>
+<h2 id="Coding" class="doc_header"><code>class</code> <code>Coding</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/Field.py#L299" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Coding</code>(<strong><code>coding_file</code></strong>, <strong><code>coding_num</code></strong>)</p>
 </blockquote>
 
 </div>

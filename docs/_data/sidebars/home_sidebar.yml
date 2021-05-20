@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Title
-      url: read_data_very_basic.html
+      url: simulation.html
     - output: web,pdf
       title: Functions to extract phenotype info
       url: phenotypes.html

@@ -14,3 +14,7 @@ globals_test:
 disease_summary:
   type: pandas.CSVDataSet
   filepath: data/01_raw/Disease_summary_information.csv
+  
+sample_ids:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/sample_ids.pkl

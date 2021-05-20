@@ -63,6 +63,7 @@ def get_catalog(env: Union[str, List[str]]=["base", "local"], patterns=["catalog
     # Create the DataCatalog instance from the configuration
     catalog = DataCatalog.from_config(conf_catalog)
     catalog.load = change_cwd_dir(package_outer_folder)(catalog.load)
+    catalog.save = change_cwd_dir(package_outer_folder)(catalog.save)
     catalog.env = env
     catalog.patterns = patterns
     catalog.reload = reload.__get__(catalog)

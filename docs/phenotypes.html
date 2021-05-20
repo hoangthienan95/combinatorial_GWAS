@@ -32,9 +32,11 @@ nb_path: "notebooks/package/phenotypes.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:root:Loading ICD phenotype matrix, this might take a while
+<pre>/lab/corradin_biobank/FOR_AN/combinatorial_GWAS/.venv/lib/python3.8/site-packages/kedro/extras/datasets/pandas/csv_dataset.py:158: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support regex separators (separators &gt; 1 char and different from &#39;\s+&#39; are interpreted as regex); you can avoid this warning by specifying engine=&#39;python&#39;.
+  return pd.read_csv(fs_file, **self._load_args)
+WARNING:root:Loading ICD phenotype matrix, this might take a while
 WARNING:root:Finished loading ICD10 matrix
-/lab/corradin_biobank/FOR_AN/combinatorial_GWAS/combinatorial_gwas/phenotypes/__init__.py:22: UserWarning: registration of accessor &lt;class &#39;combinatorial_gwas.phenotypes.__init__.QueryDataframe&#39;&gt; under name &#39;pheno&#39; for type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt; is overriding a preexisting attribute with the same name.
+/lab/corradin_biobank/FOR_AN/combinatorial_GWAS/combinatorial_gwas/phenotypes/__init__.py:24: UserWarning: registration of accessor &lt;class &#39;combinatorial_gwas.phenotypes.__init__.QueryDataframe&#39;&gt; under name &#39;pheno&#39; for type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt; is overriding a preexisting attribute with the same name.
   class QueryDataframe():
 WARNING:root:Loading ICD phenotype matrix, this might take a while
 WARNING:root:Finished loading ICD10 matrix
@@ -66,7 +68,7 @@ WARNING:root:Finished loading ICD10 matrix
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="QueryDataframe" class="doc_header"><code>class</code> <code>QueryDataframe</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/__init__.py#L22" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>QueryDataframe</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h2 id="QueryDataframe" class="doc_header"><code>class</code> <code>QueryDataframe</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/__init__.py#L24" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>QueryDataframe</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 <p>QueryDataframe(df: pandas.core.frame.DataFrame)</p>
 
@@ -83,21 +85,6 @@ WARNING:root:Finished loading ICD10 matrix
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>&lt;ipython-input-21-dcb25e435725&gt;:5: UserWarning: registration of accessor &lt;class &#39;__main__.QueryDataframe&#39;&gt; under name &#39;pheno&#39; for type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt; is overriding a preexisting attribute with the same name.
-  class QueryDataframe():
-</pre>
-</div>
-</div>
-
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -149,6 +136,8 @@ WARNING:root:Finished loading ICD10 matrix
 <pre>[&#39;example_iris_data&#39;,
  &#39;globals_test&#39;,
  &#39;disease_summary&#39;,
+ &#39;sample_ids&#39;,
+ &#39;chr_22&#39;,
  &#39;ICD10_pheno_matrix&#39;,
  &#39;phenotypes_info_Neale&#39;,
  &#39;GWAS_results_links_df&#39;,
@@ -158,6 +147,23 @@ WARNING:root:Finished loading ICD10 matrix
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_ids</span> <span class="o">=</span> <span class="n">catalog_all</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;sample_ids&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -187,17 +193,6 @@ WARNING:root:Finished loading ICD10 matrix
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">heritability_Neale</span> <span class="o">=</span> <span class="n">catalog_all</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;heritability_trait_level_summary&quot;</span><span class="p">)</span>
-<span class="n">heritability_Neale</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -435,16 +430,6 @@ WARNING:root:Finished loading ICD10 matrix
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;h2_liability&#39;</span><span class="p">,</span> <span class="s1">&#39;h2_sig&#39;</span><span class="p">,</span> <span class="s1">&#39;confidence&#39;</span><span class="p">,</span> <span class="s1">&#39;n_cases&#39;</span><span class="p">,</span> <span class="s1">&#39;n_controls&#39;</span><span class="p">,</span> <span class="s1">&#39;prevalence&#39;</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -456,14 +441,1519 @@ WARNING:root:Finished loading ICD10 matrix
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">quality_heritability_phenos</span> <span class="o">=</span> <span class="n">heritability_Neale</span><span class="o">.</span><span class="n">pheno</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">h2_sig</span> <span class="o">=</span> <span class="s2">&quot;in [&#39;z7&#39;, &#39;z4&#39;]&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span> <span class="s2">&quot; == &#39;icd10&#39;&quot;</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span> <span class="s2">&quot;in [&#39;medium&#39;, &#39;high&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;h2_liability&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">quality_heritability_phenos</span> <span class="o">=</span> <span class="n">quality_heritability_phenos</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;phenotype&quot;</span><span class="p">)</span>
-<span class="n">quality_heritability_phenos</span><span class="o">.</span><span class="n">head</span><span class="p">()[</span><span class="n">display_cols</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">heritability_Neale</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;h2_sig == [&#39;z7&#39;, &#39;z4&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;h2_liability&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phenotype</th>
+      <th>description</th>
+      <th>h2_liability</th>
+      <th>h2_liability_se</th>
+      <th>h2_observed</th>
+      <th>h2_observed_se</th>
+      <th>h2_z</th>
+      <th>h2_p</th>
+      <th>h2_sig</th>
+      <th>confidence</th>
+      <th>...</th>
+      <th>sex</th>
+      <th>isNotPrimary</th>
+      <th>isBadPower</th>
+      <th>isLowNeff</th>
+      <th>isMidNeff</th>
+      <th>isExtremeSE</th>
+      <th>isHighSE</th>
+      <th>isSexBias</th>
+      <th>isBadOrdinal</th>
+      <th>isNumericOrdinal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2543</th>
+      <td>50_irnt</td>
+      <td>Standing height</td>
+      <td>0.485223</td>
+      <td>0.021812</td>
+      <td>0.485223</td>
+      <td>0.021812</td>
+      <td>22.246180</td>
+      <td>6.140928e-110</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2554</th>
+      <td>5097_irnt</td>
+      <td>6mm weak meridian (left)</td>
+      <td>0.433908</td>
+      <td>0.038336</td>
+      <td>0.433908</td>
+      <td>0.038336</td>
+      <td>11.318693</td>
+      <td>5.302052e-30</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1293</th>
+      <td>20153_irnt</td>
+      <td>Forced expiratory volume in 1-second (FEV1), p...</td>
+      <td>0.433270</td>
+      <td>0.023709</td>
+      <td>0.433270</td>
+      <td>0.023709</td>
+      <td>18.274839</td>
+      <td>6.563795e-75</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2579</th>
+      <td>5134_irnt</td>
+      <td>6mm strong meridian (left)</td>
+      <td>0.427685</td>
+      <td>0.038038</td>
+      <td>0.427685</td>
+      <td>0.038038</td>
+      <td>11.243581</td>
+      <td>1.245346e-29</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4155</th>
+      <td>2395_4</td>
+      <td>Hair/balding pattern: Pattern 4</td>
+      <td>0.423410</td>
+      <td>0.042975</td>
+      <td>0.198793</td>
+      <td>0.020177</td>
+      <td>9.852372</td>
+      <td>3.347251e-23</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>male</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2578</th>
+      <td>5133_irnt</td>
+      <td>6mm strong meridian (right)</td>
+      <td>0.423025</td>
+      <td>0.036995</td>
+      <td>0.423025</td>
+      <td>0.036995</td>
+      <td>11.434813</td>
+      <td>1.400691e-30</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2555</th>
+      <td>5098_irnt</td>
+      <td>6mm weak meridian (right)</td>
+      <td>0.418781</td>
+      <td>0.037019</td>
+      <td>0.418781</td>
+      <td>0.037019</td>
+      <td>11.312652</td>
+      <td>5.680164e-30</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2302</th>
+      <td>30100_irnt</td>
+      <td>Mean platelet (thrombocyte) volume</td>
+      <td>0.406220</td>
+      <td>0.057866</td>
+      <td>0.406220</td>
+      <td>0.057866</td>
+      <td>7.019956</td>
+      <td>1.109691e-12</td>
+      <td>z7</td>
+      <td>medium</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2553</th>
+      <td>5096_irnt</td>
+      <td>3mm weak meridian (left)</td>
+      <td>0.393818</td>
+      <td>0.038762</td>
+      <td>0.393818</td>
+      <td>0.038762</td>
+      <td>10.160001</td>
+      <td>1.495374e-24</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4152</th>
+      <td>2395_1</td>
+      <td>Hair/balding pattern: Pattern 1</td>
+      <td>0.387338</td>
+      <td>0.036491</td>
+      <td>0.227732</td>
+      <td>0.021454</td>
+      <td>10.614754</td>
+      <td>1.272325e-26</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>male</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2556</th>
+      <td>5099_irnt</td>
+      <td>3mm weak meridian (right)</td>
+      <td>0.387322</td>
+      <td>0.040353</td>
+      <td>0.387322</td>
+      <td>0.040353</td>
+      <td>9.598457</td>
+      <td>4.057488e-22</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2580</th>
+      <td>5135_irnt</td>
+      <td>3mm strong meridian (left)</td>
+      <td>0.385232</td>
+      <td>0.037401</td>
+      <td>0.385232</td>
+      <td>0.037401</td>
+      <td>10.300087</td>
+      <td>3.519882e-25</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2577</th>
+      <td>5132_irnt</td>
+      <td>3mm strong meridian (right)</td>
+      <td>0.383519</td>
+      <td>0.039018</td>
+      <td>0.383519</td>
+      <td>0.039018</td>
+      <td>9.829196</td>
+      <td>4.214439e-23</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1084</th>
+      <td>20015_irnt</td>
+      <td>Sitting height</td>
+      <td>0.348691</td>
+      <td>0.016679</td>
+      <td>0.348691</td>
+      <td>0.016679</td>
+      <td>20.905813</td>
+      <td>2.370294e-97</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2600</th>
+      <td>5257_irnt</td>
+      <td>Corneal resistance factor (right)</td>
+      <td>0.335975</td>
+      <td>0.028842</td>
+      <td>0.335975</td>
+      <td>0.028842</td>
+      <td>11.648723</td>
+      <td>1.164611e-31</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2448</th>
+      <td>4105_irnt</td>
+      <td>Heel bone mineral density (BMD) (left)</td>
+      <td>0.334856</td>
+      <td>0.033472</td>
+      <td>0.334856</td>
+      <td>0.033472</td>
+      <td>10.004035</td>
+      <td>7.315592e-24</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2459</th>
+      <td>4124_irnt</td>
+      <td>Heel bone mineral density (BMD) (right)</td>
+      <td>0.332595</td>
+      <td>0.034420</td>
+      <td>0.332595</td>
+      <td>0.034420</td>
+      <td>9.662767</td>
+      <td>2.169904e-22</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2449</th>
+      <td>4106_irnt</td>
+      <td>Heel bone mineral density (BMD) T-score, autom...</td>
+      <td>0.332009</td>
+      <td>0.033339</td>
+      <td>0.332009</td>
+      <td>0.033339</td>
+      <td>9.958575</td>
+      <td>1.156770e-23</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2447</th>
+      <td>4104_irnt</td>
+      <td>Heel quantitative ultrasound index (QUI), dire...</td>
+      <td>0.332008</td>
+      <td>0.033339</td>
+      <td>0.332008</td>
+      <td>0.033339</td>
+      <td>9.958647</td>
+      <td>1.155933e-23</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2456</th>
+      <td>4123_irnt</td>
+      <td>Heel quantitative ultrasound index (QUI), dire...</td>
+      <td>0.331454</td>
+      <td>0.034208</td>
+      <td>0.331454</td>
+      <td>0.034208</td>
+      <td>9.689506</td>
+      <td>1.670712e-22</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2476</th>
+      <td>4125_irnt</td>
+      <td>Heel bone mineral density (BMD) T-score, autom...</td>
+      <td>0.331446</td>
+      <td>0.034206</td>
+      <td>0.331446</td>
+      <td>0.034206</td>
+      <td>9.689696</td>
+      <td>1.667599e-22</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2548</th>
+      <td>5085_irnt</td>
+      <td>Spherical power (left)</td>
+      <td>0.328175</td>
+      <td>0.020486</td>
+      <td>0.328175</td>
+      <td>0.020486</td>
+      <td>16.019682</td>
+      <td>4.656245e-58</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2547</th>
+      <td>5084_irnt</td>
+      <td>Spherical power (right)</td>
+      <td>0.326352</td>
+      <td>0.020095</td>
+      <td>0.326352</td>
+      <td>0.020095</td>
+      <td>16.240512</td>
+      <td>1.303684e-59</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2445</th>
+      <td>4100_irnt</td>
+      <td>Ankle spacing width (left)</td>
+      <td>0.317641</td>
+      <td>0.017658</td>
+      <td>0.317641</td>
+      <td>0.017658</td>
+      <td>17.988582</td>
+      <td>1.197038e-72</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2368</th>
+      <td>3148_irnt</td>
+      <td>Heel bone mineral density (BMD)</td>
+      <td>0.317506</td>
+      <td>0.031145</td>
+      <td>0.317506</td>
+      <td>0.031145</td>
+      <td>10.194588</td>
+      <td>1.048155e-24</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2850</th>
+      <td>78_irnt</td>
+      <td>Heel bone mineral density (BMD) T-score, autom...</td>
+      <td>0.315207</td>
+      <td>0.031078</td>
+      <td>0.315207</td>
+      <td>0.031078</td>
+      <td>10.142315</td>
+      <td>1.792511e-24</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2367</th>
+      <td>3147_irnt</td>
+      <td>Heel quantitative ultrasound index (QUI), dire...</td>
+      <td>0.315203</td>
+      <td>0.031079</td>
+      <td>0.315203</td>
+      <td>0.031079</td>
+      <td>10.142120</td>
+      <td>1.796082e-24</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2450</th>
+      <td>4119_irnt</td>
+      <td>Ankle spacing width (right)</td>
+      <td>0.312397</td>
+      <td>0.016995</td>
+      <td>0.312397</td>
+      <td>0.016995</td>
+      <td>18.381263</td>
+      <td>9.279797e-76</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2604</th>
+      <td>5265_irnt</td>
+      <td>Corneal resistance factor (left)</td>
+      <td>0.311305</td>
+      <td>0.026667</td>
+      <td>0.311305</td>
+      <td>0.026667</td>
+      <td>11.673911</td>
+      <td>8.663491e-32</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2300</th>
+      <td>30080_irnt</td>
+      <td>Platelet count</td>
+      <td>0.307884</td>
+      <td>0.032764</td>
+      <td>0.307884</td>
+      <td>0.032764</td>
+      <td>9.397034</td>
+      <td>2.806142e-21</td>
+      <td>z7</td>
+      <td>medium</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2201</th>
+      <td>23101_irnt</td>
+      <td>Whole body fat-free mass</td>
+      <td>0.302503</td>
+      <td>0.011553</td>
+      <td>0.302503</td>
+      <td>0.011553</td>
+      <td>26.184329</td>
+      <td>2.004229e-151</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2202</th>
+      <td>23102_irnt</td>
+      <td>Whole body water mass</td>
+      <td>0.302087</td>
+      <td>0.011557</td>
+      <td>0.302087</td>
+      <td>0.011557</td>
+      <td>26.138755</td>
+      <td>6.614652e-151</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2365</th>
+      <td>3143_irnt</td>
+      <td>Ankle spacing width</td>
+      <td>0.301831</td>
+      <td>0.015535</td>
+      <td>0.301831</td>
+      <td>0.015535</td>
+      <td>19.428648</td>
+      <td>2.209243e-84</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2446</th>
+      <td>4101_irnt</td>
+      <td>Heel broadband ultrasound attenuation (left)</td>
+      <td>0.298408</td>
+      <td>0.031728</td>
+      <td>0.298408</td>
+      <td>0.031728</td>
+      <td>9.405259</td>
+      <td>2.595103e-21</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2228</th>
+      <td>23129_irnt</td>
+      <td>Trunk fat-free mass</td>
+      <td>0.298052</td>
+      <td>0.011476</td>
+      <td>0.298052</td>
+      <td>0.011476</td>
+      <td>25.972560</td>
+      <td>5.057101e-149</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2204</th>
+      <td>23105_irnt</td>
+      <td>Basal metabolic rate</td>
+      <td>0.296321</td>
+      <td>0.011322</td>
+      <td>0.296321</td>
+      <td>0.011322</td>
+      <td>26.172150</td>
+      <td>2.758118e-151</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2229</th>
+      <td>23130_irnt</td>
+      <td>Trunk predicted mass</td>
+      <td>0.296296</td>
+      <td>0.011430</td>
+      <td>0.296296</td>
+      <td>0.011430</td>
+      <td>25.923194</td>
+      <td>1.824027e-148</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2451</th>
+      <td>4120_irnt</td>
+      <td>Heel broadband ultrasound attenuation (right)</td>
+      <td>0.294529</td>
+      <td>0.031884</td>
+      <td>0.294529</td>
+      <td>0.031884</td>
+      <td>9.237596</td>
+      <td>1.260491e-20</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2366</th>
+      <td>3144_irnt</td>
+      <td>Heel Broadband ultrasound attenuation, direct ...</td>
+      <td>0.288307</td>
+      <td>0.028292</td>
+      <td>0.288307</td>
+      <td>0.028292</td>
+      <td>10.190395</td>
+      <td>1.094363e-24</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2675</th>
+      <td>6138_1</td>
+      <td>Qualifications: College or University degree</td>
+      <td>0.285602</td>
+      <td>0.009297</td>
+      <td>0.168548</td>
+      <td>0.005487</td>
+      <td>30.719943</td>
+      <td>1.541503e-207</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2212</th>
+      <td>23113_irnt</td>
+      <td>Leg fat-free mass (right)</td>
+      <td>0.282356</td>
+      <td>0.010881</td>
+      <td>0.282356</td>
+      <td>0.010881</td>
+      <td>25.950270</td>
+      <td>9.028024e-149</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2213</th>
+      <td>23114_irnt</td>
+      <td>Leg predicted mass (right)</td>
+      <td>0.282212</td>
+      <td>0.010856</td>
+      <td>0.282212</td>
+      <td>0.010856</td>
+      <td>25.997054</td>
+      <td>2.673464e-149</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2216</th>
+      <td>23117_irnt</td>
+      <td>Leg fat-free mass (left)</td>
+      <td>0.281976</td>
+      <td>0.010893</td>
+      <td>0.281976</td>
+      <td>0.010893</td>
+      <td>25.887005</td>
+      <td>4.664133e-148</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2217</th>
+      <td>23118_irnt</td>
+      <td>Leg predicted mass (left)</td>
+      <td>0.281242</td>
+      <td>0.010851</td>
+      <td>0.281242</td>
+      <td>0.010851</td>
+      <td>25.919000</td>
+      <td>2.033838e-148</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2599</th>
+      <td>5256_irnt</td>
+      <td>Corneal hysteresis (right)</td>
+      <td>0.275428</td>
+      <td>0.025017</td>
+      <td>0.275428</td>
+      <td>0.025017</td>
+      <td>11.009806</td>
+      <td>1.713706e-28</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2221</th>
+      <td>23122_irnt</td>
+      <td>Arm predicted mass (right)</td>
+      <td>0.274811</td>
+      <td>0.010110</td>
+      <td>0.274811</td>
+      <td>0.010110</td>
+      <td>27.181847</td>
+      <td>5.323478e-163</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2220</th>
+      <td>23121_irnt</td>
+      <td>Arm fat-free mass (right)</td>
+      <td>0.274690</td>
+      <td>0.010120</td>
+      <td>0.274690</td>
+      <td>0.010120</td>
+      <td>27.142264</td>
+      <td>1.562285e-162</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2224</th>
+      <td>23125_irnt</td>
+      <td>Arm fat-free mass (left)</td>
+      <td>0.269922</td>
+      <td>0.010019</td>
+      <td>0.269922</td>
+      <td>0.010019</td>
+      <td>26.942153</td>
+      <td>3.524759e-160</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2225</th>
+      <td>23126_irnt</td>
+      <td>Arm predicted mass (left)</td>
+      <td>0.269056</td>
+      <td>0.010015</td>
+      <td>0.269056</td>
+      <td>0.010015</td>
+      <td>26.864994</td>
+      <td>2.817778e-159</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2205</th>
+      <td>23106_irnt</td>
+      <td>Impedance of whole body</td>
+      <td>0.268544</td>
+      <td>0.009617</td>
+      <td>0.268544</td>
+      <td>0.009617</td>
+      <td>27.923605</td>
+      <td>6.897033e-172</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2295</th>
+      <td>30040_irnt</td>
+      <td>Mean corpuscular volume</td>
+      <td>0.266674</td>
+      <td>0.035533</td>
+      <td>0.266674</td>
+      <td>0.035533</td>
+      <td>7.504958</td>
+      <td>3.072409e-14</td>
+      <td>z7</td>
+      <td>medium</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2198</th>
+      <td>23098_irnt</td>
+      <td>Weight</td>
+      <td>0.265599</td>
+      <td>0.009805</td>
+      <td>0.265599</td>
+      <td>0.009805</td>
+      <td>27.087627</td>
+      <td>6.887055e-162</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1483</th>
+      <td>21002_irnt</td>
+      <td>Weight</td>
+      <td>0.265415</td>
+      <td>0.009815</td>
+      <td>0.265415</td>
+      <td>0.009815</td>
+      <td>27.041975</td>
+      <td>2.373356e-161</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4037</th>
+      <td>6153_2</td>
+      <td>Medication for cholesterol, blood pressure, di...</td>
+      <td>0.258441</td>
+      <td>0.018049</td>
+      <td>0.118466</td>
+      <td>0.008273</td>
+      <td>14.319151</td>
+      <td>8.307080e-47</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>female</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2301</th>
+      <td>30090_irnt</td>
+      <td>Platelet crit</td>
+      <td>0.255684</td>
+      <td>0.034362</td>
+      <td>0.255684</td>
+      <td>0.034362</td>
+      <td>7.440785</td>
+      <td>5.004445e-14</td>
+      <td>z7</td>
+      <td>medium</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2347</th>
+      <td>30770_irnt</td>
+      <td>IGF-1 (nmol/L)</td>
+      <td>0.253212</td>
+      <td>0.018468</td>
+      <td>0.253212</td>
+      <td>0.018468</td>
+      <td>13.710800</td>
+      <td>4.374420e-43</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2297</th>
+      <td>30050_irnt</td>
+      <td>Mean corpuscular haemoglobin</td>
+      <td>0.253001</td>
+      <td>0.033201</td>
+      <td>0.253001</td>
+      <td>0.033201</td>
+      <td>7.620246</td>
+      <td>1.265960e-14</td>
+      <td>z7</td>
+      <td>medium</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2207</th>
+      <td>23108_irnt</td>
+      <td>Impedance of leg (left)</td>
+      <td>0.252192</td>
+      <td>0.009544</td>
+      <td>0.252192</td>
+      <td>0.009544</td>
+      <td>26.422957</td>
+      <td>3.732895e-154</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2206</th>
+      <td>23107_irnt</td>
+      <td>Impedance of leg (right)</td>
+      <td>0.251010</td>
+      <td>0.009489</td>
+      <td>0.251010</td>
+      <td>0.009489</td>
+      <td>26.453122</td>
+      <td>1.679547e-154</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2203</th>
+      <td>23104_irnt</td>
+      <td>Body mass index (BMI)</td>
+      <td>0.248880</td>
+      <td>0.008376</td>
+      <td>0.248880</td>
+      <td>0.008376</td>
+      <td>29.714182</td>
+      <td>2.518128e-194</td>
+      <td>z7</td>
+      <td>high</td>
+      <td>...</td>
+      <td>both_sexes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>60 rows × 37 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -922,6 +2412,42 @@ WARNING:root:Finished loading ICD10 matrix
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">quality_heritability_phenos</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;I83&#39;, &#39;I25&#39;, &#39;G56&#39;, &#39;N81&#39;, &#39;M16&#39;, &#39;M17&#39;, &#39;I48&#39;, &#39;C44&#39;, &#39;K80&#39;, &#39;I21&#39;,
+       &#39;I20&#39;, &#39;K57&#39;, &#39;K40&#39;, &#39;D12&#39;, &#39;M54&#39;, &#39;C50&#39;, &#39;K22&#39;, &#39;R07&#39;, &#39;M20&#39;, &#39;H26&#39;,
+       &#39;K21&#39;, &#39;K44&#39;, &#39;M23&#39;, &#39;N39&#39;, &#39;R10&#39;, &#39;R31&#39;, &#39;I84&#39;],
+      dtype=&#39;object&#39;, name=&#39;phenotype&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">quality_heritability_phenos</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
@@ -1025,8 +2551,8 @@ Name: I84, dtype: object</pre>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/ahoang/Documents/MIT_classes/DeepLearning_Spring21/combinatorial_GWAS/.venv/lib/python3.8/site-packages/kedro/io/data_catalog.py:402: DtypeWarning: Columns (28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236) have mixed types.Specify dtype option on import or set low_memory=False.
-  result = func()
+<pre>WARNING:root:Loading ICD phenotype matrix, this might take a while
+WARNING:root:Finished loading ICD10 matrix
 </pre>
 </div>
 </div>
@@ -1048,9 +2574,34 @@ Name: I84, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_phenotype" class="doc_header"><code>get_phenotype</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/__init__.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_phenotype</code>(<strong><code>icd10_codes</code></strong>:<code>Union</code>[<code>str</code>, <code>List</code>[<code>str</code>]]=<em><code>'I84'</code></em>, <strong><code>samples</code></strong>:<code>Series</code>=<em><code>None</code></em>)</p>
+<h4 id="upsample_pheno" class="doc_header"><code>upsample_pheno</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/__init__.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upsample_pheno</code>(<strong><code>pheno_df</code></strong>, <strong><code>balance_pheno</code></strong>, <strong><code>max_samples</code></strong>, <strong><code>random_state</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_phenotype" class="doc_header"><code>get_phenotype</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/__init__.py#L76" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_phenotype</code>(<strong><code>icd10_codes</code></strong>:<code>Union</code>[<code>str</code>, <code>List</code>[<code>str</code>]]=<em><code>'I84'</code></em>, <strong><code>samples</code></strong>:<code>array</code>=<em><code>None</code></em>, <strong><code>max_samples</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>balance_pheno</code></strong>:<code>str</code>=<em><code>None</code></em>, <strong><code>random_state</code></strong>=<em><code>42</code></em>)</p>
 </blockquote>
 <p>if samples argument is provided from genetic file, then find common set of samples and output ordered phenotype</p>
+<p>if <code>max_samples</code> is provided, then over-sample the data so that we have <code>max_samples/2</code> for both cases and controls</p>
 
 </div>
 
@@ -1076,7 +2627,8 @@ Name: I84, dtype: object</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="s2">&quot;I84&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_one_pheno</span> <span class="o">=</span> <span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="s2">&quot;I84&quot;</span><span class="p">)</span>
+<span class="n">test_one_pheno</span>
 </pre></div>
 
     </div>
@@ -1181,7 +2733,184 @@ Name: I84, dtype: object</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I84&quot;</span><span class="p">,</span> <span class="s2">&quot;R07&quot;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="s2">&quot;I84&quot;</span><span class="p">,</span> <span class="n">samples</span> <span class="o">=</span> <span class="n">sample_ids</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>I84</th>
+    </tr>
+    <tr>
+      <th>f.eid</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5542886</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5137974</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3758348</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1391800</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3165331</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3783812</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2440570</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1213317</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1354423</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4271450</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>357643 rows × 1 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="s2">&quot;I84&quot;</span><span class="p">,</span> <span class="n">samples</span> <span class="o">=</span> <span class="n">sample_ids</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>I84
+0      344300
+1       13343
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="s2">&quot;I84&quot;</span><span class="p">,</span> <span class="n">samples</span> <span class="o">=</span> <span class="n">sample_ids</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>I84
+0      976
+1       24
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I84&quot;</span><span class="p">,</span> <span class="s2">&quot;R07&quot;</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1294,6 +3023,205 @@ Name: I84, dtype: object</pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Making-phenotype-balanced-in-case/control-number">Making phenotype balanced in case/control number<a class="anchor-link" href="#Making-phenotype-balanced-in-case/control-number"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_phenotype_balanced</span> <span class="o">=</span>  <span class="n">get_phenotype</span><span class="p">(</span><span class="n">icd10_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I84&quot;</span><span class="p">,</span> <span class="s2">&quot;R07&quot;</span><span class="p">],</span> <span class="n">samples</span><span class="o">=</span><span class="n">sample_ids</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">balance_pheno</span> <span class="o">=</span> <span class="s2">&quot;R07&quot;</span><span class="p">)</span>
+<span class="n">test_phenotype_balanced</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>I84</th>
+      <th>R07</th>
+    </tr>
+    <tr>
+      <th>f.eid</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5683283</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1309216</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4200400</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4615802</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1487885</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4143614</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2696228</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1929723</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4827876</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2509818</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Only one phenotype is balanced, the others are not. The balanced phenotype is sampled with replacement with <code>weights = 1/[class frequency]</code></p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_phenotype_balanced</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">value_counts</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>I84</th>
+      <th>R07</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9494</td>
+      <td>4926</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>506</td>
+      <td>5074</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <h2 id="Get-SNPs-used-in-GWAS-for-trait">Get SNPs used in GWAS for trait<a class="anchor-link" href="#Get-SNPs-used-in-GWAS-for-trait"> </a></h2>
 </div>
@@ -1310,7 +3238,7 @@ Name: I84, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_GWAS_snps_for_trait" class="doc_header"><code>get_GWAS_snps_for_trait</code><a href="https://github.com/hoangthienan95/combinatorial_gwas/tree/master/combinatorial_gwas/phenotypes/__init__.py#L75" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_GWAS_snps_for_trait</code>(<strong><code>phenotype_code</code></strong>=<em><code>'I84'</code></em>, <strong><code>chromosome</code></strong>:<code>Union</code>[<code>int</code>, <code>List</code>[<code>int</code>]]=<em><code>21</code></em>, <strong><code>sort_val_cols_list</code></strong>:<code>List</code>[<code>str</code>]=<em><code>['pval']</code></em>, <strong><code>ascending_bool_list</code></strong>:<code>List</code>[<code>bool</code>]=<em><code>[True]</code></em>, <strong><code>id_only</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="get_GWAS_snps_for_trait" class="doc_header"><code>get_GWAS_snps_for_trait</code><a href="https://github.com/hoangthienan95/combinatorial_GWAS/tree/master/combinatorial_gwas/phenotypes/__init__.py#L110" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_GWAS_snps_for_trait</code>(<strong><code>phenotype_code</code></strong>=<em><code>'I84'</code></em>, <strong><code>chromosome</code></strong>:<code>Union</code>[<code>int</code>, <code>List</code>[<code>int</code>]]=<em><code>21</code></em>, <strong><code>sort_val_cols_list</code></strong>:<code>List</code>[<code>str</code>]=<em><code>['pval']</code></em>, <strong><code>ascending_bool_list</code></strong>:<code>List</code>[<code>bool</code>]=<em><code>[True]</code></em>, <strong><code>id_only</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1385,269 +3313,61 @@ Name: I84, dtype: object</pre>
 <div class="output_area">
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>position_rank</th>
-      <th>variant</th>
-      <th>minor_allele</th>
-      <th>minor_AF</th>
-      <th>expected_case_minor_AC</th>
-      <th>low_confidence_variant</th>
-      <th>n_complete_samples</th>
-      <th>AC</th>
-      <th>ytx</th>
-      <th>beta</th>
-      <th>se</th>
-      <th>tstat</th>
-      <th>pval</th>
-      <th>chr</th>
-      <th>position</th>
-      <th>major_allele</th>
-      <th>full_id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>46739</th>
-      <td>46739</td>
-      <td>21:23683958:G:A</td>
-      <td>A</td>
-      <td>0.448599</td>
-      <td>11373.8000</td>
-      <td>False</td>
-      <td>361194</td>
-      <td>324062.000</td>
-      <td>11381.3000</td>
-      <td>1.745250e-09</td>
-      <td>0.000435</td>
-      <td>0.000004</td>
-      <td>0.999997</td>
-      <td>21</td>
-      <td>23683958</td>
-      <td>G</td>
-      <td>21:23683958_G_A</td>
-    </tr>
-    <tr>
-      <th>156679</th>
-      <td>156679</td>
-      <td>21:44501642:C:T</td>
-      <td>T</td>
-      <td>0.012528</td>
-      <td>317.6430</td>
-      <td>False</td>
-      <td>361194</td>
-      <td>9050.310</td>
-      <td>315.2900</td>
-      <td>-1.938640e-08</td>
-      <td>0.002030</td>
-      <td>-0.000010</td>
-      <td>0.999992</td>
-      <td>21</td>
-      <td>44501642</td>
-      <td>C</td>
-      <td>21:44501642_C_T</td>
-    </tr>
-    <tr>
-      <th>57576</th>
-      <td>57576</td>
-      <td>21:25570916:T:C</td>
-      <td>C</td>
-      <td>0.006228</td>
-      <td>157.8990</td>
-      <td>False</td>
-      <td>361194</td>
-      <td>4498.860</td>
-      <td>158.5530</td>
-      <td>-5.141850e-08</td>
-      <td>0.002875</td>
-      <td>-0.000018</td>
-      <td>0.999986</td>
-      <td>21</td>
-      <td>25570916</td>
-      <td>T</td>
-      <td>21:25570916_T_C</td>
-    </tr>
-    <tr>
-      <th>17572</th>
-      <td>17572</td>
-      <td>21:18598893:A:C</td>
-      <td>C</td>
-      <td>0.001108</td>
-      <td>28.0995</td>
-      <td>False</td>
-      <td>361194</td>
-      <td>800.612</td>
-      <td>28.0941</td>
-      <td>1.672180e-07</td>
-      <td>0.006937</td>
-      <td>0.000024</td>
-      <td>0.999981</td>
-      <td>21</td>
-      <td>18598893</td>
-      <td>A</td>
-      <td>21:18598893_A_C</td>
-    </tr>
-    <tr>
-      <th>89085</th>
-      <td>89085</td>
-      <td>21:31934274:T:C</td>
-      <td>C</td>
-      <td>0.011455</td>
-      <td>290.4320</td>
-      <td>False</td>
-      <td>361194</td>
-      <td>8275.000</td>
-      <td>288.0000</td>
-      <td>7.702210e-08</td>
-      <td>0.002036</td>
-      <td>0.000038</td>
-      <td>0.999970</td>
-      <td>21</td>
-      <td>31934274</td>
-      <td>T</td>
-      <td>21:31934274_T_C</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>161896</th>
-      <td>161896</td>
-      <td>21:45545974:C:T</td>
-      <td>T</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>True</td>
-      <td>361194</td>
-      <td>0.000</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>21</td>
-      <td>45545974</td>
-      <td>C</td>
-      <td>21:45545974_C_T</td>
-    </tr>
-    <tr>
-      <th>165184</th>
-      <td>165184</td>
-      <td>21:46067181:G:C</td>
-      <td>C</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>True</td>
-      <td>361194</td>
-      <td>0.000</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>21</td>
-      <td>46067181</td>
-      <td>G</td>
-      <td>21:46067181_G_C</td>
-    </tr>
-    <tr>
-      <th>170601</th>
-      <td>170601</td>
-      <td>21:46876064:G:C</td>
-      <td>C</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>True</td>
-      <td>361194</td>
-      <td>0.000</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>21</td>
-      <td>46876064</td>
-      <td>G</td>
-      <td>21:46876064_G_C</td>
-    </tr>
-    <tr>
-      <th>176072</th>
-      <td>176072</td>
-      <td>21:47773893:C:G</td>
-      <td>G</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>True</td>
-      <td>361194</td>
-      <td>0.000</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>21</td>
-      <td>47773893</td>
-      <td>C</td>
-      <td>21:47773893_C_G</td>
-    </tr>
-    <tr>
-      <th>176489</th>
-      <td>176489</td>
-      <td>21:47831648:C:T</td>
-      <td>T</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>True</td>
-      <td>361194</td>
-      <td>0.000</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>21</td>
-      <td>47831648</td>
-      <td>C</td>
-      <td>21:47831648_C_T</td>
-    </tr>
-  </tbody>
-</table>
-<p>178155 rows × 17 columns</p>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>{21:         position_rank          variant minor_allele  minor_AF  \
+ 170594         170594  21:46875774:C:T            T  0.000007   
+ 84094           84094  21:30968890:C:T            T  0.000002   
+ 151278         151278  21:43767602:A:G            G  0.000002   
+ 88826           88826  21:31869421:T:G            G  0.000002   
+ 162176         162176  21:45587940:C:T            T  0.000003   
+ ...               ...              ...          ...       ...   
+ 161896         161896  21:45545974:C:T            T  0.000000   
+ 165184         165184  21:46067181:G:C            C  0.000000   
+ 170601         170601  21:46876064:G:C            C  0.000000   
+ 176072         176072  21:47773893:C:G            G  0.000000   
+ 176489         176489  21:47831648:C:T            T  0.000000   
+ 
+         expected_case_minor_AC  low_confidence_variant  n_complete_samples  \
+ 170594                0.172184                    True              361194   
+ 84094                 0.043356                    True              361194   
+ 151278                0.053403                    True              361194   
+ 88826                 0.041291                    True              361194   
+ 162176                0.068543                    True              361194   
+ ...                        ...                     ...                 ...   
+ 161896                0.000000                    True              361194   
+ 165184                0.000000                    True              361194   
+ 170601                0.000000                    True              361194   
+ 176072                0.000000                    True              361194   
+ 176489                0.000000                    True              361194   
+ 
+              AC       ytx      beta        se    tstat          pval chr  \
+ 170594  4.90588  2.117650  0.667492  0.107762  6.19411  5.867920e-10  21   
+ 84094   1.23529  1.000000  0.994117  0.186704  5.32456  1.012560e-07  21   
+ 151278  1.52157  0.831373  1.189730  0.226778  5.24623  1.553320e-07  21   
+ 88826   1.17647  0.952941  0.990411  0.192736  5.13868  2.768140e-07  21   
+ 162176  1.95294  0.933333  0.871227  0.184111  4.73207  2.223280e-06  21   
+ ...         ...       ...       ...       ...      ...           ...  ..   
+ 161896  0.00000  0.000000       NaN       NaN      NaN           NaN  21   
+ 165184  0.00000  0.000000       NaN       NaN      NaN           NaN  21   
+ 170601  0.00000  0.000000       NaN       NaN      NaN           NaN  21   
+ 176072  0.00000  0.000000       NaN       NaN      NaN           NaN  21   
+ 176489  0.00000  0.000000       NaN       NaN      NaN           NaN  21   
+ 
+         position major_allele          full_id  
+ 170594  46875774            C  21:46875774_C_T  
+ 84094   30968890            C  21:30968890_C_T  
+ 151278  43767602            A  21:43767602_A_G  
+ 88826   31869421            T  21:31869421_T_G  
+ 162176  45587940            C  21:45587940_C_T  
+ ...          ...          ...              ...  
+ 161896  45545974            C  21:45545974_C_T  
+ 165184  46067181            G  21:46067181_G_C  
+ 170601  46876064            G  21:46876064_G_C  
+ 176072  47773893            C  21:47773893_C_G  
+ 176489  47831648            C  21:47831648_C_T  
+ 
+ [178155 rows x 17 columns]}</pre>
 </div>
 
 </div>

@@ -1,24 +1,11 @@
-# Project name here
-> Summary description here.
+# Combinatorial GWAS
+> This package provides helper functions and scripts to perform experiments on using neural networks to predict UK Biobank phenotypes from genotype
 
-
-This file will become your README and also the index of your documentation.
 
 ## Install
 
-`pip install your_project_name`
+`pip install combinatorial-gwas`
 
 ## How to use
 
-Fill me in please! Don't forget code examples:
-
-```
-1+1
-```
-
-
-
-
-    2
-
-
+Please view included notebooks for example use cases
